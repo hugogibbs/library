@@ -7,17 +7,55 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     
-    <title>Library</title>
+    <title>My book library</title>
 </head>
 <body>
 
     <div class="container">
-        
-        My book Library
+        <div class="title">My book library</div>
+        <div class="line1">In this project you can create a library using <i>Object Constructors</i> and <em>Local Storage</em></div>
+        <div class="line2">You can also check the <a href = "https://github.com/hugogibbs/library">Github repository</a> of this project on my <a href="https://github.com/hugogibbs">Github account</a></div>
+
+        <button class="addBook">+ Add book</button>
 
 
+        <table class="booksList">
 
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Read</th>
+                    <th>Remove</th>
+                </tr>
+                <tr>
+                    <td>The Bible</td>
+                    <td>Inspired by God</td>
+                    <td>1281</td>
+                    <td><button class="read">READ</button></td>
+                    <td><button class="remove">REMOVE</button></td>
+                </tr>
+                <tr>
+                    <td>Unlimited Power</td>
+                    <td>Tony Robbins</td>
+                    <td>634</td>
+                    <td><button class="read">NOT READ</button></td>
+                    <td><button class="remove">REMOVE</button></td>
+                </tr>
+                <tr>
+                    <td>Harry Potter</td>
+                    <td>J.K. Rowling</td>
+                    <td>123</td>
+                    <td><button class="read">READ</button></td>
+                    <td><button class="remove">REMOVE</button></td>
+                  </tr>
+              </table>
+
+        </table>
 
     </div>
+
+
 </body>
 </html>
