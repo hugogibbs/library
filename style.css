@@ -19,19 +19,45 @@ body {
     padding-bottom: 10px;
 }
 
+.line2 {
+    margin-bottom: 40px;
+}
+
 a {
     color: dodgerblue;
 }
 
-button.addBook {
+a.addButton {
     background-color: dodgerblue;
     color: white;
     height: 50px;
-    width: 150px;
-    font-size: 18px;
+    width: 200px;
+    font-size: 22px;
     margin-top: 30px;
+    padding: 10px 15px;
     border: none;
     border-radius: 30px;
+    text-decoration: none;
+}
+
+.formHeader {
+    display: grid;
+    grid-template-columns: 250px 50px;
+}
+
+#close {
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    margin-top: 20px;
+    border-radius: 20px;
+    margin-left: 40px;
+
 }
 
 .footer {
@@ -65,21 +91,21 @@ table {
     width: 130vh;
     gap: 10px;
 
-  }
+}
 
-  th {
+th {
     padding-bottom: 10px;
     text-align: left;
     border-bottom: 1px solid rgb(200,200,200);
-  }
+}
 
-  td {
+td {
     padding-bottom: 15px;
     padding-top: 15px;
     border-bottom: 1px solid rgb(200,200,200);
-  }
+}
 
-  button.read {
+button.read {
     height: 40px;
     width: 100px;
     border-radius: 5px;
@@ -87,11 +113,26 @@ table {
     font-size: 12px;
     background-color: white;
     border-color: solid rgb(200,200,200);
-    
-    
-  }
+}
 
-  button.remove {
+button.read:hover {
+    border-width: 2px;
+}
+
+button.remove:hover {
+    background-color: crimson;
+}
+
+button.addBook:hover {
+    background-color: #3882f6;
+}
+
+
+button.submitBook:hover {
+    background-color: #3882f6;
+}
+
+button.remove {
     height: 40px;
     width: 100px;
     background-color: deeppink;
@@ -99,4 +140,84 @@ table {
     border: none;
     border-radius: 5px;
     font-size: 12px;
+}
+
+
+input.bookTitle, input.bookAuthor, input.bookPages {
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 250px;
+    font-size: 22px;
+    margin: 15px;
+    padding-left: 10px;
+    
+}
+
+
+.formContainer {
+    background-color: #e5e7eb;
+    display: grid;
+    grid-template-columns: 200px;
+    margin-right: 300px;
+    margin-left: 300px;
+    border-radius: 20px;
+    padding-left: 40px;
+    width: 340px
+
+}
+
+.formTitle {
+    text-align: center;
+    width: 280px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.submitBook {
+    background-color: dodgerblue;   
+    color: white;
+    font-size: 22px;
+    height: 50px;
+    width: 250px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.readBox {
+    display: grid;
+    grid-template-columns: 210px 30px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.readIt {
+    font-size: 22px;
+    padding-left: 40px;
+
+}
+
+.checkbox {
+    height: 20px;
+}
+
+a.addBook {
+    color: white;
+    text-decoration: none;
+}
+
+.popup {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }

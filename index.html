@@ -7,21 +7,41 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     
-    <title>My book library</title>
+    <title>Library</title>
 </head>
 <body>
 
-    <div class="container">
+    <div class="popup" id="popup">
+        <div class="formContainer">
+            <form id="addBook"> 
+                    <div class="formHeader">
+                        <div class="formTitle">Add new book</div>
+                        <a href="#" id="close">x</a>
+                    </div>
+                    <input class="bookTitle" type="text" id="book_title" name="book_title" placeholder="Title" required>
+                    <input class="bookAuthor" type="text" id="book_author" name="book_author" placeholder="Author" required>
+                    <input class="bookPages" type="number" id="book_pages" name="book_pages" placeholder="Pages" required>
+                    <div class="readBox">
+                        <div class="readIt">Have you read it?</div>
+                        <input type="checkbox" class="checkbox">
+                    </div>
+                    <button class="submitBook" type="submit" id="submit_book" name="submit_book">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="container">
         <div class="title">My book library</div>
         <div class="line1">In this project you can create a library using <i>Object Constructors</i> and <em>Local Storage</em></div>
         <div class="line2">You can also check the <a href = "https://github.com/hugogibbs/library">Github repository</a> of this project on my <a href="https://github.com/hugogibbs">Github account</a></div>
 
-        <button class="addBook">+ Add book</button>
+        <a class="addButton" id="addButton" href="#">+ Add book</a>
 
+       
 
-        <table class="booksList">
+        <table class="booksList" id="booksList">
 
-            <table>
+            <table id="table">
                 <tr>
                     <th>Name</th>
                     <th>Author</th>
@@ -53,6 +73,10 @@
               </table>
 
         </table>
+
+
+
+        <form action=""></form>
 
     </div>
 
