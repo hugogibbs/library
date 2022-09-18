@@ -89,7 +89,6 @@ table {
     margin-top: 25px;
     border-collapse: collapse;
     width: 130vh;
-    gap: 10px;
 
 }
 
@@ -163,7 +162,9 @@ input.bookTitle, input.bookAuthor, input.bookPages {
     margin-left: 300px;
     border-radius: 20px;
     padding-left: 40px;
-    width: 340px
+    width: 340px;
+    min-width: 340px;
+    max-width: 340px;
 
 }
 

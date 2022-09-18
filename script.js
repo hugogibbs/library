@@ -1,28 +1,36 @@
 
+//Get the inputs from the form
+
+let bookTitle = document.getElementById('book_title').value
+console.log(bookTitle)
+
+
+let bookAuthor = document.getElementById('book_author').value
+console.log(bookAuthor)
+
+
+let bookPages = document.getElementById('book_pages').value
+console.log(bookPages)
+
+
+//Add the inputs collected from the form to the table
 
 let book = document.createElement("td")
-book.textContent = "Rich Dad, Poor Dad"
+book.textContent = bookTitle
 document.getElementById('table').appendChild(book);
-
+book.className = 'booksList'
 
 let author = document.createElement("td")
-author.textContent = "Robert Kiyosaki"
+author.textContent = bookAuthor
 document.getElementById('table').appendChild(author);
 
 
 let pages = document.createElement("td")
-pages.textContent = "235"
+pages.textContent = bookPages
 document.getElementById('table').appendChild(pages);
 
-let read = document.createElement("td")
-read.textContent = "READ"
-document.getElementById('table').appendChild(read);
 
-
-let remove = document.createElement("td")
-remove.textContent = "REMOVE"
-document.getElementById('table').appendChild(remove);
-
+// show and hide form with the add book and X buttons 
 
 document.getElementById('addButton').addEventListener('click', function(){
     document.querySelector (".popup").style.display = "flex";
@@ -31,3 +39,4 @@ document.getElementById('addButton').addEventListener('click', function(){
 document.getElementById('close').addEventListener('click', function(){
     document.querySelector (".popup").style.display = "none";
 })
+
