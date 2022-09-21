@@ -1,33 +1,70 @@
+// test
+// Declare empty array for the library
+let myLibrary = [];
 
-//Get the inputs from the form
+// object constructor
+function Book(Title, Author, Pages, Read, Remove) {
+    this.Title = Title;
+    this.Author = Author;
+    this.Pages = Pages;
+    this.Read = Read;
+    this.Remove = Remove;
 
-let bookTitle = document.getElementById('book_title').value
-console.log(bookTitle)
+}
 
+// function for adding a new book to the array
+function addBookToLibrary(Title, Author, Pages, Read, Remove) {
+    let book = new Book(Title, Author, Pages, Read, Remove);
+    myLibrary.push(book);
+}
 
-let bookAuthor = document.getElementById('book_author').value
-console.log(bookAuthor)
+// display array in a table
+function displayBooksOnPage () {
+    const books = document.querySelector(".books");
 
+    myLibrary.forEach(myLibrary => {
+    const row = document.createElement('tr');
+    row.classList.add('tr');
+    table.appendChild(row);
+    for (let key in myLibrary) {
+        console.log(`${key}: ${myLibrary[key]}`);
+        if (`${key}`== 'Read') {
+            const item = document.createElement('td');
+            row.appendChild(item);
+            const readBtn = document.createElement('button');
+            readBtn.textContent = 'READ'
+            readBtn.className = 'read';
+            item.appendChild(readBtn);
+        }
+        else if (`${key}`== 'Remove'){
+            const item = document.createElement('td');
+            row.appendChild(item);
+            const remBtn = document.createElement('button');
+            remBtn.textContent = 'REMOVE';
+            remBtn.className = 'remove';
+            item.appendChild(remBtn);
+        }
+        else {
+            const item = document.createElement('td');
+            item.textContent = (`${myLibrary[key]}`);
+            row.appendChild(item);
+        
+        }
+    }
+    
 
-let bookPages = document.getElementById('book_pages').value
-console.log(bookPages)
+})
 
+}
 
-//Add the inputs collected from the form to the table
+addBookToLibrary("Beat the system", "Hugo Gibbs", "123", "Read");
+addBookToLibrary("Rich Dad, Poor Dad", "Robert Kiyosaki", "231", "Not Read");
+addBookToLibrary("The 5 AM Club", "Robin Sharma", "321", "Read");
+addBookToLibrary("10X", "Grant Cardone", "222", "Not Read");
 
-let book = document.createElement("td")
-book.textContent = bookTitle
-document.getElementById('table').appendChild(book);
-book.className = 'booksList'
+console.log("End of code array contents", myLibrary);
 
-let author = document.createElement("td")
-author.textContent = bookAuthor
-document.getElementById('table').appendChild(author);
-
-
-let pages = document.createElement("td")
-pages.textContent = bookPages
-document.getElementById('table').appendChild(pages);
+displayBooksOnPage();
 
 
 // show and hide form with the add book and X buttons 
