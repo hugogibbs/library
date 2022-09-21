@@ -13,17 +13,17 @@
 
     <div class="popup" id="popup">
         <div class="formContainer">
-            <form id="addBook"> 
+            <form action="results.html" id="addBook" method="get"> 
                     <div class="formHeader">
                         <div class="formTitle">Add new book</div>
                         <a href="#" id="close">x</a>
                     </div>
-                    <input class="bookTitle" type="text" id="book_title" name="book_title" placeholder="Title" value="Beat the system" required>
+                    <input class="bookTitle" type="text" id="book_title" name="book_title" placeholder="Title" required>
                     <input class="bookAuthor" type="text" id="book_author" name="book_author" placeholder="Author" value="Hugo Gibbs" required>
-                    <input class="bookPages" type="number" id="book_pages" name="book_pages" placeholder="Pages" value="120" required>
+                    <input class="bookPages" min="0" max="100000" type="number" id="book_pages" name="book_pages" placeholder="Pages" value="120" required>
                     <div class="readBox">
                         <div class="readIt">Have you read it?</div>
-                        <input type="checkbox" class="checkbox">
+                        <input type="checkbox" class="checkbox" name="read_yesno">
                     </div>
                     <button class="submitBook" type="submit" id="submit_book" name="submit_book">Submit</button>
             </form>
