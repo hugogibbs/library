@@ -33,17 +33,17 @@ function displayBooksOnPage () {
 
 // loop over the library array and display elements in the table
     let index = 0;
-    myLibrary.forEach(myLibrary => {
+    myLibrary.forEach(myLibrarys => {
         const row = document.createElement('tr');
         row.classList.add('tr');
         row.id = "tr";
         table.appendChild(row);
 
-        for (let key in myLibrary) {
-            console.log(`${key}: ${myLibrary[key]}`);
+        for (let key in myLibrarys) {
+            console.log(`${key}: ${myLibrarys[key]}`);
     
                 const item = document.createElement('td');
-                item.textContent = (`${myLibrary[key]}`);
+                item.textContent = (`${myLibrarys[key]}`);
                 row.appendChild(item);
                 
             }
@@ -69,17 +69,12 @@ function displayBooksOnPage () {
             let retrieveBookToRemove = removeBookButton.dataset.linkedArray;
             console.log("Attempting to remove array item via data attribute...", parseInt(retrieveBookToRemove));
             myLibrary.splice(parseInt(retrieveBookToRemove), 1);
+            alert('This book will be removed');
             row.remove();
             displayBooksOnPage();
          }
-        
-    
     })
 }
-
-
- 
-
 
 //transform form data to variables for intake
 
@@ -89,7 +84,6 @@ function intakeFormData() {
     let Author = document.getElementById("book_author").value;
     let Pages = document.getElementById("book_pages").value;
     let Read = document.getElementById("read_yesno").value;
-    let Remove = 'Remove'
 
     if ((Title == "")|| (Author =="") || (Pages=="")) {
         alert("Please fill all the elements in the form");
@@ -109,7 +103,7 @@ addBookToLibrary("Harry Potter", "J.K. Rowling", "221", "Read");
 
 
 //start event listener to add form input to library array
-const submitButton = document.Selector(".submit_book");
+const submitButton = document.querySelector(".submit_book");
 submitButton.className = 'submitBook';
 submitButton.addEventListener('click', intakeFormData);
 
