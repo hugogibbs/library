@@ -7,7 +7,6 @@ function Book(Title, Author, Pages) {
     this.Title = Title;
     this.Author = Author;
     this.Pages = Pages;
-
 }
 
 // function for adding a new book to the array
@@ -27,7 +26,6 @@ function displayBooksOnPage () {
     for (let i = 0; i < removeTable.length; i++) {
         removeTable[i].remove();
     }
-
 
 // loop over the library array and display elements in the table
     let index = 0;
@@ -55,26 +53,24 @@ function displayBooksOnPage () {
         readBookButton.dataset.linkedArray = count;
         count++;
         readItem.appendChild(readBookButton);
-
-        if (check_read.checked) {
-        
-            readBookButton.textContent = 'READ';
-        }
-        else {
-            readBookButton.textContent = 'NOT READ';
-        }
-
-        readBookButton.addEventListener('click', function() {
+       
+        readBookButton.addEventListener("click", function() {
             if (readBookButton.textContent == 'READ') {
                 readBookButton.textContent = 'NOT READ';
             }
-
+    
             else if (readBookButton.textContent == 'NOT READ') {
                 readBookButton.textContent = 'READ';
             }
+            
+            })
 
-        })
-
+        if (check_read.checked) {
+            readBookButton.textContent = 'READ';
+        }
+        else { 
+            readBookButton.textContent = 'NOT READ';
+        }
 
         // Create remove book button and add class attribute for each array row
         const buttonItem = document.createElement('td');
@@ -122,7 +118,6 @@ function intakeFormData() {
     document.getElementById("addBook").reset();
 
 }
-
 
 addBookToLibrary("The Bible", "Inspired by God", "1200", "Read");
 addBookToLibrary("Unlimited Power", "Tony Robbins", "531", "Not Read");
