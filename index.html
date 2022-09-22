@@ -23,9 +23,9 @@
                     <input class="bookPages" min="0" max="100000" type="number" id="book_pages" name="book_pages" placeholder="Pages" required>
                     <div class="readBox">
                         <div class="readIt">Have you read it?</div>
-                        <input type="checkbox" class="checkbox" name="read_yesno">
+                        <input type="checkbox" id="read_yesno" class="checkbox" name="read_yesno" value="read">
                     </div>
-                    <button class="submitBook" type="submit" id="submit_book" name="submit_book">Submit</button>
+                    <button class="submit_book" type="submit" id="submit_book" name="submit_book">Submit</button>
             </form>
         </div>
     </div>
@@ -41,7 +41,7 @@
 
         <table class="booksList" id="booksList">
 
-            <table id="table">
+            <table id="table" class="table">
                 <tr>
                     <th>Name</th>
                     <th>Author</th>
@@ -49,35 +49,9 @@
                     <th>Read</th>
                     <th>Remove</th>
                 </tr>
-                <tr>
-                    <td>The Bible</td>
-                    <td>Inspired by God</td>
-                    <td>1281</td>
-                    <td><button class="read">READ</button></td>
-                    <td><button class="remove">REMOVE</button></td>
-                </tr>
-                <tr>
-                    <td>Unlimited Power</td>
-                    <td>Tony Robbins</td>
-                    <td>634</td>
-                    <td><button class="read">NOT READ</button></td>
-                    <td><button class="remove">REMOVE</button></td>
-                </tr>
-                <tr>
-                    <td>Harry Potter</td>
-                    <td>J.K. Rowling</td>
-                    <td>123</td>
-                    <td><button class="read">READ</button></td>
-                    <td><button class="remove">REMOVE</button></td>
-                  </tr>
               </table>
 
         </table>
-
-
-
-        <form action=""></form>
-
     </div>
 
 
