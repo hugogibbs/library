@@ -3,18 +3,17 @@
 let myLibrary = [];
 
 // object constructor
-function Book(Title, Author, Pages, Read, Remove) {
+function Book(Title, Author, Pages, Read) {
     this.Title = Title;
     this.Author = Author;
     this.Pages = Pages;
     this.Read = Read;
-    this.Remove = Remove;
 
 }
 
 // function for adding a new book to the array
-function addBookToLibrary(Title, Author, Pages, Read, Remove) {
-    let book = new Book(Title, Author, Pages, Read, Remove);
+function addBookToLibrary(Title, Author, Pages, Read) {
+    let book = new Book(Title, Author, Pages, Read);
     myLibrary.push(book);
     displayBooksOnPage();
 }
@@ -35,56 +34,45 @@ function displayBooksOnPage () {
 // loop over the library array and display elements in the table
     let index = 0;
     myLibrary.forEach(myLibrary => {
-    const row = document.createElement('tr');
-    row.classList.add('tr');
-    row.id = "tr";
-    table.appendChild(row);
+        const row = document.createElement('tr');
+        row.classList.add('tr');
+        row.id = "tr";
+        table.appendChild(row);
 
-
+        for (let key in myLibrary) {
+            console.log(`${key}: ${myLibrary[key]}`);
     
+                const item = document.createElement('td');
+                item.textContent = (`${myLibrary[key]}`);
+                row.appendChild(item);
+                
+            }
 
-    for (let key in myLibrary) {
-        console.log(`${key}: ${myLibrary[key]}`);
-        
-            const item = document.createElement('td');
-            row.appendChild(item);
-            const readBtn = document.createElement('button');
-            readBtn.textContent = 'READ'
-            readBtn.className = 'read';
-            item.appendChild(readBtn);
-        }
-        else if (`${key}`== 'Remove'){
-            // Link the data attribute of the remove button to the array and row of the table
-            const item = document.createElement('td');
-            row.appendChild(item);
-            const removeBookButton = document.createElement('button');
-            removeBookButton.className = 'remove';
-            removeBookButton.textContent = 'REMOVE';
-            removeBookButton.dataset.linkedArray = index;
-            index++;
-            console.log("show me the dataset link back to the array...", removeBookButton.dataset.linkedArray);
-            item.appendChild(removeBookButton);
-            removeBookButton.addEventListener("click", removeBookFromLibrary);
+        // Create remove book button and add class attribute for each array row
+        const buttonItem = document.createElement('td');
+        row.appendChild(buttonItem);
+        const removeBookButton = document.createElement('button');
+        removeBookButton.className = 'remove';
+        removeBookButton.textContent = 'REMOVE';
+        console.log("show me my current array objects inside of foreach...", myLibrary);
+                
+         // Link the data attribute of the remove button to the array and row of the table
+         removeBookButton.dataset.linkedArray = index;
+         index++;
+         console.log("show me the dataset link back to the array...", removeBookButton.dataset.linkedArray);
+         buttonItem.appendChild(removeBookButton);
+         
+         // start event listener/remove array item from array and row from parent via data link
+         removeBookButton.addEventListener("click", removeBookFromLibrary);
 
-            function removeBookFromLibrary() {
+         function removeBookFromLibrary() {
             let retrieveBookToRemove = removeBookButton.dataset.linkedArray;
             console.log("Attempting to remove array item via data attribute...", parseInt(retrieveBookToRemove));
             myLibrary.splice(parseInt(retrieveBookToRemove), 1);
             row.remove();
             displayBooksOnPage();
-  
-        }
-    }
-        else {
-            const item = document.createElement('td');
-            item.textContent = (`${myLibrary[key]}`);
-            row.appendChild(item);
+         }
         
-        }
-
-        // Start event listener / remove array item from array and row from parent via data link
-        
-        }
     
     })
 }
@@ -108,7 +96,7 @@ function intakeFormData() {
         return;
     }
 
-    addBookToLibrary(Title, Author, Pages, Read, Remove);
+    addBookToLibrary(Title, Author, Pages, Read);
 
     document.getElementById("addBook").reset();
 
