@@ -3,17 +3,16 @@
 let myLibrary = [];
 
 // object constructor
-function Book(Title, Author, Pages, Read) {
+function Book(Title, Author, Pages) {
     this.Title = Title;
     this.Author = Author;
     this.Pages = Pages;
-    this.Read = Read;
 
 }
 
 // function for adding a new book to the array
-function addBookToLibrary(Title, Author, Pages, Read) {
-    let book = new Book(Title, Author, Pages, Read);
+function addBookToLibrary(Title, Author, Pages) {
+    let book = new Book(Title, Author, Pages);
     myLibrary.push(book);
     displayBooksOnPage();
 }
@@ -30,9 +29,9 @@ function displayBooksOnPage () {
     }
 
 
-
 // loop over the library array and display elements in the table
     let index = 0;
+    let count = 0;
     myLibrary.forEach(myLibrarys => {
         const row = document.createElement('tr');
         row.classList.add('tr');
@@ -47,6 +46,35 @@ function displayBooksOnPage () {
                 row.appendChild(item);
                 
             }
+
+        const readItem = document.createElement('td');
+        row.appendChild(readItem);
+        const readBookButton = document.createElement('button');
+        readBookButton.className = 'read';
+        readBookButton.textContent = 'READ';
+        readBookButton.dataset.linkedArray = count;
+        count++;
+        readItem.appendChild(readBookButton);
+
+        if (check_read.checked) {
+        
+            readBookButton.textContent = 'READ';
+        }
+        else {
+            readBookButton.textContent = 'NOT READ';
+        }
+
+        readBookButton.addEventListener('click', function() {
+            if (readBookButton.textContent == 'READ') {
+                readBookButton.textContent = 'NOT READ';
+            }
+
+            else if (readBookButton.textContent == 'NOT READ') {
+                readBookButton.textContent = 'READ';
+            }
+
+        })
+
 
         // Create remove book button and add class attribute for each array row
         const buttonItem = document.createElement('td');
@@ -83,14 +111,13 @@ function intakeFormData() {
     let Title = document.getElementById("book_title").value;
     let Author = document.getElementById("book_author").value;
     let Pages = document.getElementById("book_pages").value;
-    let Read = document.getElementById("read_yesno").value;
-
+    
     if ((Title == "")|| (Author =="") || (Pages=="")) {
         alert("Please fill all the elements in the form");
         return;
     }
 
-    addBookToLibrary(Title, Author, Pages, Read);
+    addBookToLibrary(Title, Author, Pages);
 
     document.getElementById("addBook").reset();
 
@@ -121,4 +148,4 @@ document.getElementById('close').addEventListener('click', function(){
 
 document.getElementById('submit_book').addEventListener('click', function(){
     document.querySelector (".popup").style.display = "none";
-})
+})  
