@@ -44,32 +44,37 @@ function displayBooksOnPage () {
                 row.appendChild(item);
                 
             }
-
+        
+        // Create read button
         const readItem = document.createElement('td');
         row.appendChild(readItem);
         const readBookButton = document.createElement('button');
         readBookButton.className = 'read';
         readBookButton.textContent = 'READ';
-        readBookButton.dataset.linkedArray = count;
-        count++;
+        
+        //Link the data attribute to the toggle read button to the array and table
+        readBookButton.dataset.linkedArray = index;
+        console.log("show me the dataset link back to the array FOR READ STATUS BUTTON...", readBookButton.dataset.linkedArray)
         readItem.appendChild(readBookButton);
        
-        readBookButton.addEventListener("click", function() {
-            if (readBookButton.textContent == 'READ') {
-                readBookButton.textContent = 'NOT READ';
-            }
-    
-            else if (readBookButton.textContent == 'NOT READ') {
-                readBookButton.textContent = 'READ';
-            }
-            
-            })
+        // create event listener/toggle logic for array objects prototype for read status change
 
-        if (check_read.checked) {
-            readBookButton.textContent = 'READ';
-        }
-        else { 
-            readBookButton.textContent = 'NOT READ';
+
+        readBookButton.addEventListener("click", toggleReadStatus);
+
+        function toggleReadStatus() {
+            let retrieveBookToToggle = readBookButton.dataset.linkedArray;
+            Book.prototype = Object.create(Book.prototype);
+            const toggleBook = new Book();
+            console.log("What is the toggle initial value?...", myLibrary[parseInt(retrieveBookToToggle)].Read)
+
+            //Run check to see what read value is present to toggle from
+            if ((readBookButton.textContent) == "READ") {
+                readBookButton.textContent = "NOT READ";
+            }
+            else if ((readBookButton.textContent) == "NOT READ") {
+                readBookButton.textContent = "READ";
+            }
         }
 
         // Create remove book button and add class attribute for each array row
@@ -97,6 +102,7 @@ function displayBooksOnPage () {
             row.remove();
             displayBooksOnPage();
          }
+
     })
 }
 
@@ -107,6 +113,13 @@ function intakeFormData() {
     let Title = document.getElementById("book_title").value;
     let Author = document.getElementById("book_author").value;
     let Pages = document.getElementById("book_pages").value;
+    let Read = check_box.checked.value;
+    if (check_read.checked) {
+        Read = 'READ';
+    }
+    else {
+        Read = 'NOT READ';
+    }
     
     if ((Title == "")|| (Author =="") || (Pages=="")) {
         alert("Please fill all the elements in the form");
@@ -119,9 +132,9 @@ function intakeFormData() {
 
 }
 
-addBookToLibrary("The Bible", "Inspired by God", "1200", "Read");
-addBookToLibrary("Unlimited Power", "Tony Robbins", "531", "Not Read");
-addBookToLibrary("Harry Potter", "J.K. Rowling", "221", "Read");
+addBookToLibrary("The Bible", "Inspired by God", "1200");
+addBookToLibrary("Unlimited Power", "Tony Robbins", "531");
+addBookToLibrary("Harry Potter", "J.K. Rowling", "221");
 
 
 //start event listener to add form input to library array
