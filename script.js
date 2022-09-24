@@ -10,6 +10,35 @@ function Book(Title, Author, Pages, Read) {
     this.Read = Read;
 }
 
+//start event listener to add form input to library array
+document.getElementById('submit_book').addEventListener('click', intakeFormData);
+
+//transform form data to variables for intake
+function intakeFormData() {
+    let Title = document.getElementById("book_title").value;
+    let Author = document.getElementById("book_author").value;
+    let Pages = document.getElementById("book_pages").value;
+    let Read = document.getElementById("check_read").checked;
+    
+    if (document.getElementById("check_read").checked == true) {
+        Read = 'READ';
+    }
+    else {
+        Read = 'NOT READ';
+    }
+    
+    if ((Title == "")|| (Author =="") || (Pages=="")) {
+        alert("Please fill all the elements in the form");
+        return;
+    }
+
+    addBookToLibrary(Title, Author, Pages, Read);
+
+    document.getElementById("addBook").reset();
+
+}
+
+
 // function for adding a new book to the array
 function addBookToLibrary(Title, Author, Pages, Read) {
     let book = new Book(Title, Author, Pages, Read);
@@ -29,8 +58,7 @@ function displayBooksOnPage () {
     }
 
 // loop over the library array and display elements in the table
-    let index = 0;
-    let count = 0;
+    
     myLibrary.forEach(myLibrarys => {
         const row = document.createElement('tr');
         row.classList.add('tr');
@@ -64,18 +92,7 @@ function displayBooksOnPage () {
                 item.textContent = (`${myLibrarys[key]}`);
                 row.appendChild(item);
                 }
-            }
-        
-
-        document.getElementById('read').addEventListener('click', function(){
-                
-            if (document.getElementById('read').value == 'READ') {
-                readButton.textContent = 'NOT READ';
-            }
-            else if (document.getElementById('read').value == 'NOT READ') {
-                readButton.textContent = 'READ';
-            }
-        })
+            }   
 
         // Create remove book button and add class attribute for each array row
         const buttonItem = document.createElement('td');
@@ -86,8 +103,6 @@ function displayBooksOnPage () {
         console.log("show me my current array objects inside of foreach...", myLibrary);
                 
          // Link the data attribute of the remove button to the array and row of the table
-         removeBookButton.dataset.linkedArray = index;
-         index++;
          console.log("show me the dataset link back to the array...", removeBookButton.dataset.linkedArray);
          buttonItem.appendChild(removeBookButton);
          
@@ -106,55 +121,22 @@ function displayBooksOnPage () {
     })
 }
 
-//transform form data to variables for intake
-
-function intakeFormData() {
-    event.preventDefault();
-    let Title = document.getElementById("book_title").value;
-    let Author = document.getElementById("book_author").value;
-    let Pages = document.getElementById("book_pages").value;
-    let Read = document.getElementById("check_read").checked;
-    
-    if (document.getElementById("check_read").checked == true) {
-        Read = 'READ';
-    }
-    else {
-        Read = 'NOT READ';
-    }
-    
-    if ((Title == "")|| (Author =="") || (Pages=="")) {
-        alert("Please fill all the elements in the form");
-        return;
-    }
-
-    addBookToLibrary(Title, Author, Pages, Read);
-
-    document.getElementById("addBook").reset();
-
-}
-
 addBookToLibrary("The Bible", "Inspired by God", "1200", 'READ');
 addBookToLibrary("Unlimited Power", "Tony Robbins", "531", 'NOT READ');
 addBookToLibrary("Harry Potter", "J.K. Rowling", "221", "READ");
-
-
-//start event listener to add form input to library array
-const submitButton = document.querySelector(".submit_book");
-submitButton.className = 'submitBook';
-submitButton.addEventListener('click', intakeFormData);
 
 console.log("End of code array contents", myLibrary);
 
 // show and hide form with the add book and X buttons 
 
-document.getElementById('addButton').addEventListener('click', function(){
-    document.querySelector (".popup").style.display = "flex";
+addButton.addEventListener('click', function(){
+    popup.style.display = "flex";
 })
 
-document.getElementById('close').addEventListener('click', function(){
-    document.querySelector (".popup").style.display = "none";
+closeForm.addEventListener('click', function(){
+    popup.style.display = "none";
 })
 
-document.getElementById('submit_book').addEventListener('click', function(){
-    document.querySelector (".popup").style.display = "none";
+submit_book.addEventListener('click', function(){
+    popup.style.display = "none";
 })  
