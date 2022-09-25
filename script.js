@@ -58,7 +58,7 @@ function displayBooksOnPage () {
     }
 
 // loop over the library array and display elements in the table
-    
+    let index = 0;
     myLibrary.forEach(myLibrarys => {
         const row = document.createElement('tr');
         row.classList.add('tr');
@@ -103,6 +103,8 @@ function displayBooksOnPage () {
         console.log("show me my current array objects inside of foreach...", myLibrary);
                 
          // Link the data attribute of the remove button to the array and row of the table
+         removeBookButton.dataset.linkedArray = index;
+         index++;
          console.log("show me the dataset link back to the array...", removeBookButton.dataset.linkedArray);
          buttonItem.appendChild(removeBookButton);
          
